@@ -1,0 +1,15 @@
+const menuToggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.nav');
+menuToggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(open));});
+const dropdown=document.querySelector('.nav-dropdown');
+const dropdownToggle=document.querySelector('.dropdown-toggle');
+dropdownToggle?.addEventListener('click',()=>{const open=dropdown.classList.toggle('is-open');dropdownToggle.setAttribute('aria-expanded',String(open));});
+document.addEventListener('click',event=>{if(dropdown&&!dropdown.contains(event.target)){dropdown.classList.remove('is-open');dropdownToggle?.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'){dropdown?.classList.remove('is-open');dropdownToggle?.setAttribute('aria-expanded','false');nav?.classList.remove('open');menuToggle?.setAttribute('aria-expanded','false');}});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuToggle?.setAttribute('aria-expanded','false');}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const sections=[...document.querySelectorAll('main section[id]')];const links=[...document.querySelectorAll('.nav a')];
+const activeObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+entry.target.id))}}),{rootMargin:'-35% 0px -55% 0px',threshold:0});
+sections.forEach(s=>activeObserver.observe(s));
+document.querySelectorAll('#year,.year').forEach(el=>el.textContent=new Date().getFullYear());
