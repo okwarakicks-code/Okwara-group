@@ -23,3 +23,13 @@
 @media(max-width:800px){.business-gallery-grid,.business-gallery-grid:has(.business-gallery-card:nth-child(4)){grid-template-columns:repeat(2,minmax(0,1fr))}.business-gallery-card img{height:220px}}
 @media(max-width:520px){.business-gallery-grid,.business-gallery-grid:has(.business-gallery-card:nth-child(4)){grid-template-columns:1fr}.business-gallery-card img{height:250px}}
 .contact-details{display:grid;gap:12px;margin:25px 0}.contact-details a{display:flex;flex-direction:column;align-items:flex-start;color:var(--ink);font-size:15px;font-weight:700;text-decoration:none}.contact-details a:hover,.division-details li a:hover{color:#a6782d}.contact-details a span{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}.division-details li a{color:inherit;text-decoration:none}
+
+/* Keep the three group businesses evenly spaced around the homepage orbit. */
+.label-logistics{top:10%;left:4%;right:auto;bottom:auto}
+.label-kicks{top:48%;right:0;bottom:auto;left:auto}
+.label-waste{bottom:9%;left:4%;top:auto;right:auto}
+@media(max-width:720px){
+  .label-logistics{top:2%;left:0}
+  .label-kicks{top:47%;right:0;bottom:auto;left:auto}
+  .label-waste{bottom:2%;left:0;top:auto;right:auto}
+}
